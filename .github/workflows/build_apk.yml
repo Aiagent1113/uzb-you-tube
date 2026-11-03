@@ -23,6 +23,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.24.5'
           channel: 'stable'
           cache: true
 
@@ -49,7 +50,7 @@ jobs:
         run: |
           cd flutter_app
           mkdir -p build/app/outputs/symbols
-          flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols
+          flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols --android-skip-build-dependency-validation
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
