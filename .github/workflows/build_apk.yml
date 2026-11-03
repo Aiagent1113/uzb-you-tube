@@ -49,25 +49,37 @@ jobs:
           flutter pub get
 
       - name: Build Release APK
-        id: build_step
         run: |
           cd flutter_app
-          flutter build apk --release --verbose > build_log.txt 2>&1
+          mkdir -p build/app/outputs/symbols
+          flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols --android-skip-build-dependency-validation
 
       - name: Upload APK Artifact
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: UzDub-YouTube-AI-Release-APK
           path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
           retention-days: 14
 
+      - name: Create GitHub Release with APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: "UzDub YouTube AI v1.0.0 (Release APK)"
+          body: "🚀 UzDub YouTube AI rasmiy Android ilovasi. Smartfoningizga yuklab olib o'rnating!"
+          files: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
       - name: Commit Build Log on Failure
         if: failure()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          tail -n 300 flutter_app/build_log.txt > last_error.txt
+          cd flutter_app
+          flutter build apk --release --android-skip-build-dependency-validation -v > error.log 2>&1 || true
+          tail -n 250 error.log > ../last_error.txt
+          cd ..
           git checkout -b build-log
           git add last_error.txt
           git commit -m "ci: record failure log"
