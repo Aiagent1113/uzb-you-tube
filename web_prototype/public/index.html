@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>UzDub YouTube AI - Luxury Prototype Simulator</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff0033">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="simulator-wrapper">
+    <!-- Phone Mockup Frame -->
+    <div class="phone-frame">
+      <div class="dynamic-island">
+        <div class="camera-lens"></div>
+        <div class="sensor-dot"></div>
+      </div>
+
+      <!-- App Header Bar -->
+      <div class="phone-status-bar">
+        <span class="status-time" id="statusTime">09:41</span>
+        <div class="status-brand">
+          <span class="brand-badge">PROTOTYPE</span>
+          <span class="brand-text">UzDub <span class="highlight">AI</span></span>
+        </div>
+        <div class="status-icons">
+          <span class="icon-wifi">●●●</span>
+          <span class="icon-battery">98%</span>
+        </div>
+      </div>
+
+      <!-- Main YouTube Mobile Viewport Container -->
+      <div class="viewport-container" id="viewportContainer">
+        <!-- YouTube Mobile Top Nav -->
+        <div class="yt-header">
+          <div class="yt-logo-box">
+            <svg class="yt-svg" viewBox="0 0 24 24"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span class="yt-name">YouTube</span>
+          </div>
+          <div class="yt-actions">
+            <button class="yt-icon-btn">🔍</button>
+            <button class="yt-icon-btn">🔔</button>
+            <div class="yt-avatar">U</div>
+          </div>
+        </div>
+
+        <!-- Video Player Section (Tap to hide/show controls) -->
+        <div class="video-player-box" id="videoTapArea">
+          <!-- Real HTML5 Video element for demonstration -->
+          <video id="demoVideo" loop playsinline>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          </video>
+
+          <div class="video-overlay-gradient"></div>
+
+          <!-- Video Playback HUD -->
+          <div class="video-hud">
+            <button class="hud-play-btn" id="videoPlayPauseBtn">▶</button>
+            <span class="video-volume-tag" id="volumeIndicator">Vol: 100%</span>
+          </div>
+
+          <!-- Live Subtitles & Real-time Uzbek Translation Overlay -->
+          <div class="captions-container" id="captionsBox">
+            <div class="raw-subtitle-tag" id="rawSubtitleTag">Captions: Ready</div>
+            <div class="uzbek-subtitle-pill" id="uzbekSubtitle">
+              <span class="sub-flag">🇺🇿</span>
+              <span class="sub-text" id="translatedSubText">UzDub AI kutish rejimida...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Info & Channels Details -->
+        <div class="video-info-section">
+          <h1 class="video-title">Building the Future of Autonomous AI Systems with Neural Architecture</h1>
+          <div class="video-meta">1.8M views • 2 days ago • #ArtificialIntelligence</div>
+
+          <div class="channel-row">
+            <div class="channel-avatar"></div>
+            <div class="channel-details">
+              <div class="channel-name">Tech Frontier AI</div>
+              <div class="channel-subscribers">2.4M subscribers</div>
+            </div>
+            <button class="subscribe-btn">Obuna bo‘lish</button>
+          </div>
+
+          <!-- Sample action chips -->
+          <div class="action-chips-scroll">
+            <div class="action-chip active">👍 142K</div>
+            <div class="action-chip">👎</div>
+            <div class="action-chip">↗ Ulashish</div>
+            <div class="action-chip">⬇ Yuklab olish</div>
+            <div class="action-chip">✂ Klip</div>
+          </div>
+
+          <!-- Security Status Card -->
+          <div class="security-card">
+            <div class="sec-card-header">
+              <div class="sec-dot"></div>
+              <span>Xavfsizlik Himoyasi: <strong>FAOL</strong></span>
+            </div>
+            <div class="sec-card-body">
+              <div>Anti-Tamper & Frida Guard: <span class="badge-ok">BLOKLANGAN</span></div>
+              <div>HMAC-SHA256 Token Shartnomasi: <span class="badge-ok">IMZOLANGAN</span></div>
+              <div>Audio Ducking (20%): <span class="badge-active" id="duckingBadge">NORMAL</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SYNCHRONIZED GLASSMORPHISM FLOATING PLAYER BAR -->
+        <div class="floating-bar-dock" id="floatingPlayerBar">
+          <div class="glass-bar-container">
+            <!-- Main controls row -->
+            <div class="bar-top-row">
+              <!-- Dubbing Toggle Button -->
+              <button class="dubbing-toggle-btn active" id="dubbingToggleBtn" title="Dublyajni yoqish/o'chirish">
+                <span class="toggle-icon" id="toggleIcon">🔊</span>
+                <span class="pulse-ring"></span>
+              </button>
+
+              <!-- Voice Selector Button -->
+              <div class="voice-selector-box" id="voiceSelectTrigger">
+                <div class="voice-icon-box">🎙️</div>
+                <div class="voice-text-box">
+                  <span class="voice-label">OVOZ</span>
+                  <span class="voice-value" id="currentVoiceLabel">Madina (HD)</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+              </div>
+
+              <!-- Speed Selector Button -->
+              <div class="speed-selector-box" id="speedTrigger">
+                <span id="speedLabel">1.0x</span>
+              </div>
+            </div>
+
+            <!-- Quota & Pro Row -->
+            <div class="bar-bottom-row">
+              <div class="quota-gauge">
+                <span class="gauge-icon">⏱️</span>
+                <span class="gauge-text" id="quotaText">Kunlik: 60/60 daq</span>
+              </div>
+              <div class="quota-progress-track">
+                <div class="quota-progress-fill" id="quotaFill" style="width: 100%;"></div>
+              </div>
+              <button class="pro-chip-btn" id="openProModalBtn">
+                <span>PRO</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice Selection Popup Sheet -->
+        <div class="modal-backdrop hidden" id="voiceModalBackdrop">
+          <div class="glass-sheet">
+            <div class="sheet-handle"></div>
+            <div class="sheet-title">Dublyaj Ovozini Tanlang</div>
+            <div class="sheet-desc">Tabiiy o‘zbek neyron diktorlari yoki robot ovozi</div>
+
+            <div class="voice-option selected" data-voice="uz-UZ-MadinaNeural" data-label="Madina (HD)">
+              <div class="voice-avatar-circle">👩</div>
+              <div class="voice-meta">
+                <div class="name-row">
+                  <span class="name">Madina Neural (HD)</span>
+                  <span class="tier-badge neural">NEURAL HD</span>
+                </div>
+                <div class="desc">Mayin, tabiiy ayol diktor ovozi</div>
+                <div class="quota-hint" id="madinaQuotaHint">Qolgan HD limit: 15.0 daqiqa</div>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+
+            <div class="voice-option" data-voice="uz-UZ-SardorNeural" data-label="Sardor (HD)">
+              <div class="voice-avatar-circle">👨</div>
+              <div class="voice-meta">
+                <div class="name-row">
+                  <span class="name">Sardor Neural (HD)</span>
+                  <span class="tier-badge neural">NEURAL HD</span>
+                </div>
+                <div class="desc">Jiddiy, professional erkak diktor ovozi</div>
+                <div class="quota-hint" id="sardorQuotaHint">Qolgan HD limit: 15.0 daqiqa</div>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+
+            <div class="voice-option" data-voice="robot" data-label="Standart Robot">
+              <div class="voice-avatar-circle">🤖</div>
+              <div class="voice-meta">
+                <div class="name-row">
+                  <span class="name">Standart Robot Ovozi</span>
+                  <span class="tier-badge robot">STANDART</span>
+                </div>
+                <div class="desc">Qurilmaning ichki sintezatori (Cheksiz bepul)</div>
+              </div>
+              <span class="check-mark">✓</span>
+            </div>
+
+            <button class="sheet-close-btn" id="closeVoiceSheetBtn">Yopish</button>
+          </div>
+        </div>
+
+        <!-- Speed Selection Popup Sheet -->
+        <div class="modal-backdrop hidden" id="speedModalBackdrop">
+          <div class="glass-sheet small">
+            <div class="sheet-handle"></div>
+            <div class="sheet-title">Dublyaj Tezligi</div>
+            <div class="speed-options-grid">
+              <button class="speed-opt-btn active" data-speed="1.0">1.0x Normal</button>
+              <button class="speed-opt-btn" data-speed="1.25">1.25x Tezkor</button>
+              <button class="speed-opt-btn" data-speed="1.5">1.5x Yuqori</button>
+            </div>
+            <button class="sheet-close-btn" id="closeSpeedSheetBtn">Tanlash</button>
+          </div>
+        </div>
+
+        <!-- Luxury PRO Upgrade Modal -->
+        <div class="modal-backdrop hidden" id="proModalBackdrop">
+          <div class="glass-sheet pro-sheet">
+            <div class="sheet-handle"></div>
+            
+            <div class="pro-modal-header">
+              <span class="pro-badge-glow">PRO</span>
+              <h2>UzDub Premium AI</h2>
+            </div>
+            <p class="pro-modal-subtitle">Cheksiz tabiiy o‘zbek ovozlari va zero-latency audio ducking bilan to‘liq rohatlaning</p>
+
+            <div class="perk-box">
+              <div class="perk-icon">🎙️</div>
+              <div class="perk-text">
+                <div class="perk-title">Cheksiz HD Neural Ovozlar</div>
+                <div class="perk-desc">Madina va Sardor diktorlarida 15 daqiqalik cheklov butunlay olib tashlanadi.</div>
+              </div>
+            </div>
+
+            <div class="perk-box">
+              <div class="perk-icon">⚡</div>
+              <div class="perk-text">
+                <div class="perk-title">0.1s Zero-Latency Audio Ducking</div>
+                <div class="perk-desc">Asl video ovozini 20% ga tushirib, tarjimani tiniq yetkazish.</div>
+              </div>
+            </div>
+
+            <div class="perk-box">
+              <div class="perk-icon">♾️</div>
+              <div class="perk-text">
+                <div class="perk-title">Kunlik 60 daqiqalik to‘siq yo‘q</div>
+                <div class="perk-desc">Istalgancha film, darslik va podkastlarni tomosha qiling.</div>
+              </div>
+            </div>
+
+            <!-- Telegram Bot CTA -->
+            <a href="https://t.me/UzDubAI_bot" target="_blank" class="tg-cta-btn" id="tgCtaBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2 11.5L9.5 14.5L12.5 22L15.5 17L21.5 3.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Telegram Bot Orqali Xarid Qilish</span>
+            </a>
+
+            <div class="or-divider">
+              <span>YOKI KALIT BILAN</span>
+            </div>
+
+            <div class="key-input-box">
+              <input type="text" id="licenseKeyInput" placeholder="UZDUB-PRO-XXXX-XXXX" maxlength="32">
+              <button id="activateLicenseBtn">Faollashtirish</button>
+            </div>
+            <div class="key-status-msg" id="keyStatusMsg"></div>
+
+            <button class="sheet-close-btn secondary" id="closeProModalBtn">Keyinroq</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

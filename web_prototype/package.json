@@ -1,0 +1,10 @@
+{
+  "name": "uzdub-prototype-simulator",
+  "version": "1.0.0",
+  "description": "UzDub YouTube AI - Live Interactive Prototype Simulator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
