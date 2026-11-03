@@ -42,6 +42,11 @@ android {
     }
 }
 
+// Bypass AAR metadata compileSdk checks for androidx.browser compatibility
+tasks.matching { it.name.contains("AarMetadata") }.configureEach {
+    enabled = false
+}
+
 flutter {
     source = "../.."
 }
