@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/security/security_guard.dart';
 
 /// Quota & Subscription Domain Manager
 /// Enforces Freemium Limits:
@@ -22,6 +20,7 @@ class QuotaManager extends ChangeNotifier {
   String? _activeLicenseKey;
 
   bool get isPro => _isPro;
+  String? get activeLicenseKey => _activeLicenseKey;
   int get hdConsumedSeconds => _hdConsumedSeconds;
   int get robotConsumedSeconds => _robotConsumedSeconds;
   int get totalConsumedSeconds => _hdConsumedSeconds + _robotConsumedSeconds;
