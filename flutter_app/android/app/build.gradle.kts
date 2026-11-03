@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "uz.uzdub.ai"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -19,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "uz.uzdub.ai"
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 23
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
