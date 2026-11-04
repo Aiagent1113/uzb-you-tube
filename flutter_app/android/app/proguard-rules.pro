@@ -23,7 +23,11 @@
     public static int e(...);
 }
 
-# 4. Preserve Flutter Engine & JNI Entry Points
+# 4. Suppress warnings for optional Google Play Core & deferred components in R8
+-dontwarn com.google.android.play.core.**
+-dontwarn io.flutter.embedding.engine.deferredcomponents.**
+
+# 5. Preserve Flutter Engine & JNI Entry Points
 -keep class io.flutter.app.** { *; }
 -keep class io.flutter.plugin.**  { *; }
 -keep class io.flutter.util.**  { *; }
@@ -31,20 +35,20 @@
 -keep class io.flutter.** { *; }
 -keep class io.flutter.plugins.**  { *; }
 
-# 5. Preserve Flutter InAppWebView JavaScript Handlers
+# 6. Preserve Flutter InAppWebView JavaScript Handlers
 -keep class com.pichillilorenzo.flutter_inappwebview.** { *; }
 -keepattributes JavascriptInterface
 -keepclassmembers class * {
     @android.webkit.JavascriptInterface <methods>;
 }
 
-# 6. Native C++ Vault JNI entry points
+# 7. Native C++ Vault JNI entry points
 -keepclasseswithmembernames class * {
     native <methods>;
 }
 -keep class uz.uzdub.ai.NativeVault { *; }
 
-# 7. Prevent serialization tampering
+# 8. Prevent serialization tampering
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
     private static final java.io.ObjectStreamField[] serialPersistentFields;
